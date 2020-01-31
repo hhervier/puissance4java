@@ -1,5 +1,10 @@
 package puissance4java;
 
-public class Action {
 
-}
+public class Action{
+		//Attributs//////
+
+
+	}
+	
+
