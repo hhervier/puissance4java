@@ -67,10 +67,9 @@ public class Partie {
   public static void main(String[] args) {
     Partie partie = new Partie();
     while (partie.j1.nbvictoires < 4 && partie.j2.nbvictoires < 4) {
-      partie.jeu.newGrille();
       while (!partie.jeu.testGrillePleine()) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choix colonne :");
+        System.out.println(partie.j1.nom + " choix colonne :");
         int col1 = scanner.nextInt();
         while (!partie.joueCoup(col1, 1)) {
           System.out.println("Choisir une autre colonne :");
@@ -78,12 +77,12 @@ public class Partie {
         }
         int ligne1 = partie.getIndiceLine(col1);
         if (partie.testVictoire(col1, ligne1, 1)) {
-          System.out.println("Le joueur 1 gagne!");
+          System.out.println( partie.j1.nom +" gagne! \nLa partie recommence.");
           partie.j1.nbvictoires++;
           break;
         }
         System.out.println(Arrays.deepToString(partie.jeu.grille));
-        System.out.println("Choix colonne :");
+        System.out.println(partie.j2.nom + " choix colonne :");
         int col2 = scanner.nextInt();
         while (!partie.joueCoup(col2, 2)) {
           System.out.println("Choisir une autre colonne :");
@@ -91,11 +90,14 @@ public class Partie {
         }
         int ligne2 = partie.getIndiceLine(col2);
         if (partie.testVictoire(col2, ligne2, 2)) {
-          System.out.println("Le joueur 2 gagne!");
+          System.out.println(partie.j2.nom +" gagne! \nLa partie recommence.");
           partie.j2.nbvictoires++;
           break;
         }
       }
+      partie.jeu.newGrille();
+      System.out.println(partie.j1.nom + partie.j1.nbvictoires +" victoire(s).");
+      System.out.println(partie.j2.nom +" "+ partie.j2.nbvictoires +" victoire(s).");
     }
   }
 
