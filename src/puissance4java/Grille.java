@@ -14,7 +14,6 @@ public class Grille {
   }
   
   public void newGrille() {
-    grille = new int[6][7];
     for (int i = 0 ; i <= 6 ; i++) {
       for (int j = 0 ; j <= 6 ; j++) {
         grille[i][j] = 0;
