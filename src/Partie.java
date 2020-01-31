@@ -1,7 +1,12 @@
+import java.awt.Color;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+
 import puissance4java.Grille;
+import puissance4java.Panneau;
 import puissance4java.joueur;
 
 /**
@@ -17,7 +22,8 @@ public class Partie {
   public joueur j1;
   public joueur j2;
   public Grille jeu;
-
+  public static JFrame fenetre;
+  
   public Partie() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Nom du joueur 1 :");
@@ -28,6 +34,13 @@ public class Partie {
     j2 = new joueur(0, 2, nom2);
     jeu = new Grille();
     jeu.newGrille();
+    fenetre = new JFrame();
+	fenetre.setSize(800, 700);
+	fenetre.setLocationRelativeTo(null);
+	fenetre.setVisible(true);
+	fenetre.setContentPane(new Panneau(701,601,jeu));
+	fenetre.setBackground(Color.WHITE);
+	fenetre.repaint();
   }
 
   public boolean joueCoup(int col, int joueur) {
@@ -66,8 +79,10 @@ public class Partie {
 
   public static void main(String[] args) {
     Partie partie = new Partie();
+    
     while (partie.j1.nbvictoires < 4 && partie.j2.nbvictoires < 4) {
       while (!partie.jeu.testGrillePleine()) {
+    	Partie.fenetre.repaint();
         Scanner scanner = new Scanner(System.in);
         System.out.println(partie.j1.nom + " choix colonne :");
         int col1 = scanner.nextInt();
@@ -81,7 +96,7 @@ public class Partie {
           partie.j1.nbvictoires++;
           break;
         }
-        System.out.println(Arrays.deepToString(partie.jeu.grille));
+        
         System.out.println(partie.j2.nom + " choix colonne :");
         int col2 = scanner.nextInt();
         while (!partie.joueCoup(col2, 2)) {
