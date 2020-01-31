@@ -1,0 +1,2 @@
+module puissance4java {
+}
