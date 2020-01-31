@@ -31,11 +31,11 @@ public class MonCanvas extends Canvas{
 			for (int j=0;j<=5;j=j+1) {
 				if (gri.grille[i][j]==1) {
 					g.setColor(Color.YELLOW);
-					g.fillOval(i*100,j*100,100,100);
+					g.fillOval(i*100,(6-j)*100,100,100);
 				}
 				else if(gri.grille[i][j]==2){
 					g.setColor(Color.RED);
-					g.fillOval(i*100,j*100,100,100);
+					g.fillOval(i*100,(6-j)*100,100,100);
 				}
 				else {}
 		}
