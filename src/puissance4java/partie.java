@@ -1,5 +1,5 @@
 package puissance4java;
 
-public class partie {
+public class Partie {
 
 }
