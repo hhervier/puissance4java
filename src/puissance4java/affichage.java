@@ -1,5 +1,7 @@
 package puissance4java;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -12,7 +14,8 @@ public class affichage {
 		fenetre.setSize(800, 700);
 		fenetre.setLocationRelativeTo(null);
 		fenetre.setVisible(true);
-		fenetre.setContentPane(new Panneau(700,600));
+		fenetre.setContentPane(new Panneau(701,601));
+		fenetre.setBackground(Color.WHITE);
 		fenetre.repaint();
 	}
 }
